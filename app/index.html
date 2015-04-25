@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>poly foo</title>
+  <title>Meetme</title>
   <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
   <!-- build:css styles/main.css -->
@@ -13,7 +13,7 @@
   <!-- endbuild-->
 
   <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
-  <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
+  <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
 
   <!-- will be replaced with elements/elements.vulcanized.html -->
@@ -29,34 +29,40 @@
       <!-- Drawer -->
       <core-header-panel drawer>
 
-        <!-- Drawer Toolbar -->
-        <core-toolbar>Menu</core-toolbar>
-
+        <div>
+            
+        </div>
         <!-- Drawer Content -->
         <core-menu selected="0">
-          <core-item label="Yo"></core-item>
-          <core-item label="Polymer"></core-item>
-          <core-item label="App"></core-item>
+          <core-item label="me & destination"></core-item>
+          <core-item label="all friend"></core-item>
+          <core-item label="all friend & destination"></core-item>
         </core-menu>
 
       </core-header-panel>
 
       <!-- Main -->
-      <core-header-panel main>
-
-        <!-- Main Toolbar -->
+      <div main vertical layout>
+        
+        
+        <google-map id="map" latitude="37.77493" longitude="-122.416942" flex>
+            <template is="auto-binding" id="pin" repeat="{{markers}}">
+                <google-map-marker latitude="{{lat}}" longitude="{{lng}}"
+      title="{{name}}"></google-map-marker> 
+            </template>
+         
+        </google-map>
         <core-toolbar>
-          <paper-icon-button icon="menu" core-drawer-toggle></paper-icon-button>
-          <span>{{appName}}</span>
+          
+            <core-field flex>
+                <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
+                <input placeholder="chat with friends" flex>
+                <core-icon-button icon="send"></core-icon-button>
+            </core-field>
         </core-toolbar>
-
-        <!-- Main Content -->
-        <div class="hero-unit">
-          <yo-greeting></yo-greeting>
-          <p>You now have</p>
-          <yo-list></yo-list>
-        </div>
-      </core-header-panel>
+        
+      </div>
+     
     </core-drawer-panel>
 
   </template>
