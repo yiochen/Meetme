@@ -1,0 +1,34 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/core-icon-button/core-icon.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input-decorator.html">
+<link rel="import" href="../../styles/theme.html">
+
+<polymer-element name="menu-header" attributes="">
+  <template>
+    <link rel="stylesheet" href="menu-header.css">
+      <core-style ref="menu-header"></core-style>
+      <div vertical layout center class="header-bar">
+          <template if='{{!user}}'>
+              <div id="title">User Login</div>
+              <paper-input-decorator label="email" floatingLabel>
+                <input is="core-input">    
+              </paper-input-decorator>
+              <paper-input-decorator label="password" floatingLabel>
+                <input is="core-input">
+              </paper-input-decorator>
+          </template>
+          <template if='{{user}}'>
+            <core-icon class="big-icon" icon="account-circle"></core-icon>
+          </template>
+        </div> 
+  </template>
+  <script>
+    (function () {
+      Polymer({
+        ready: function () {
+          this.user=null;
+        }
+      });
+    })();
+  </script>
+</polymer-element>

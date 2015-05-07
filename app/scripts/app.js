@@ -6,7 +6,7 @@
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
   var app = document.querySelector('#app');
   app.appName = 'Yo, Polymer App!';
-  
+  var fb=new Firebase("https://meetme.firebaseio.com");
   // Listen for template bound event to know when bindings
   // have resolved and content has been stamped to the page
   app.addEventListener('template-bound', function() {
@@ -18,6 +18,7 @@
     navigator.geolocation.getCurrentPosition(function(pos){
         map.latitude=pos.coords.latitude;
         map.longitude=pos.coords.longitude;
+        fb.set({name:"yiou",lat:map.latitude,lng:map.longitude});
         map.zoom=15;
         me.lat=pos.coords.latitude;
         me.lng=pos.coords.longitude;

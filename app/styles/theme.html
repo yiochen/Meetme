@@ -1,0 +1,50 @@
+<link rel="import" href="../../bower_components/core-style/core-style.html">
+<script>
+    CoreStyle.g.theme={
+        cPrimary:'#E7512D',
+        cPrimaryDark:'#72441E',
+        cBackground:'#CBCBC1',
+        cBackgroundLight:'#F6F6F6',
+        cBackgroundDark:'#B6AEA1',
+        cTextLight:'#FFF',
+        cTextDark:'#333'
+    }
+    CoreStyle.g.paperInput.labelColor=CoreStyle.g.theme.cTextLight;
+    CoreStyle.g.paperInput.focusedColor=CoreStyle.g.theme.cTextLight;
+</script>
+<core-style id="main">
+    body {
+        background: {{g.theme.cBackground}};
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: {{g.them.cTextDark}};
+    }
+
+
+    [drawer] {
+        color: {{g.theme.cTextDark}};
+        background-color: {{g.theme.cBackground}};
+    }
+    core-icon-button{
+        color:{{g.theme.cTextLight}};
+    }
+    core-toolbar {
+        color: {{g.theme.cTextLight}};
+        background-color: {{g.theme.cPrimary}};
+    }
+    
+</core-style>
+
+<core-style id="menu-header">
+    .big-icon{
+        color:{{g.theme.cTextLight}};
+    }
+    .header-bar{
+        color:{{g.theme.cTextLight}};
+        background-color: {{g.theme.cPrimary}};
+    }
+    paper-input-decorator /deep/ .label-text {
+        color:{{g.theme.cPrimaryDark}};
+    }
+    
+
+</core-style>

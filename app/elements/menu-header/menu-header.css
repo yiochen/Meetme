@@ -1,0 +1,13 @@
+.header-bar{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.big-icon{
+    height:82px;
+    width:82px;
+    
+    margin:auto;
+}
+#title{
+    font-size: 20px;
+}
