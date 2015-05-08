@@ -1,0 +1,59 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../styles/theme.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input-decorator.html">
+<polymer-element name="login-page">
+    <template>
+        <style>
+           
+        </style>
+        <core-style ref="login"></core-style>
+        <div class="main" vertical layout center fit>
+            <div flex></div>
+            <div class="login-form" vertical layout center>
+                <core-icon icon="face" class="big_icon" self-center></core-icon>
+                <paper-input-decorator label="email" floatingLabel>
+                    <input is="core-input">    
+                </paper-input-decorator>
+                <paper-input-decorator label="password" floatingLabel>
+                    <input is="core-input">
+                </paper-input-decorator>
+                <div horizontal layout center-justified class="buttons">
+                    <paper-button raised id="bLogin" on-click={{login}}>Login</paper-button>
+                    <paper-button raised id="bSignup">Signup</paper-button>
+                </div>
+                <div>Or login with</div>
+                <div horizontal layout center-justified>
+                    <paper-icon-button class="social facebook" src="../../images/facebook.svg"></paper-icon-button>
+                    <paper-icon-button class="social google" src="../../images/google.svg"></paper-icon-button>
+                    <paper-icon-button class="social twitter" src="../../images/twitter.svg"></paper-icon-button>
+                    <paper-icon-button class="social github" src="../../images/github.svg"></paper-icon-button>
+                </div>
+            </div>
+            <div flex></div>
+            <div id="extra" vertical layout center>
+                <a href="#">help</a>
+                <a href="#">credit</a>
+            </div>
+            
+        </div>
+        
+    </template>
+    <script>
+        (function () {
+          Polymer({
+            ready: function() {
+              
+            },
+            login: function(){
+                app.user={
+                    name:"Yiou",
+                    profile:"app\/images\/Avatar.png"
+                }
+            }
+          });
+        })();
+  </script>
+</polymer-element>

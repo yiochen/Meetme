@@ -31,16 +31,19 @@
 
       <!-- Drawer -->
       <core-header-panel drawer>
-          
-        <menu-header>
-            
-        </menu-header>
-        <!-- Drawer Content -->
-        <core-menu selected="0">
-          <core-item label="me & destination"></core-item>
-          <core-item label="all friend"></core-item>
-          <core-item label="all friend & destination"></core-item>
-        </core-menu>
+        <template if="{{user}}" >
+            <menu-header></menu-header>
+            <!-- Drawer Content -->
+            <core-menu selected="0">
+              <core-item label="me & destination"></core-item>
+              <core-item label="all friend"></core-item>
+              <core-item label="all friend & destination"></core-item>
+            </core-menu>
+        </template> 
+        <template if ="{{!user}}">
+            <login-page></login-page>
+        </template>
+        
 
       </core-header-panel>
 
@@ -49,20 +52,21 @@
         
         
         <google-map id="map" latitude="37.77493" longitude="-122.416942" flex>
-            <template is="auto-binding" id="pin" repeat="{{markers}}">
-                <google-map-marker latitude="{{lat}}" longitude="{{lng}}"
+            <template is="auto-binding" id="pin" repeat="{{marker in markers}}">
+                <google-map-marker latitude="{{marker.lat}}" longitude="{{marker.lng}}"
       title="{{name}}"></google-map-marker> 
             </template>
          
         </google-map>
           
         <core-toolbar>
-          
             <core-field flex>
                 <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
-                <input placeholder="chat with friends" flex>
-                <core-icon-button icon="send"></core-icon-button>
-            </core-field>
+                <paper-input-decorator label="{{placeholder}}" flex>
+                    <input is="core-input">
+                </paper-input-decorator>
+                <core-icon-button icon="send" on-click="{{openOverlay}}" ></core-icon-button>
+            </core-field>  
         </core-toolbar>
         
       </div>

@@ -1,28 +1,31 @@
 <link rel="import" href="../../bower_components/core-style/core-style.html">
 <script>
     CoreStyle.g.theme={
-        cPrimary:'#E7512D',
-        cPrimaryDark:'#72441E',
-        cBackground:'#CBCBC1',
-        cBackgroundLight:'#F6F6F6',
-        cBackgroundDark:'#B6AEA1',
+        cPrimary:'#58B0D6',
+        cPrimaryDark:'#3E7CB1',
+        cBackground:'#F9F8F8',
+        cBackgroundLight:'#F7DBA7',
+        cBackgroundDark:'#C57B57',
+        cAccent:'#E64C67',
         cTextLight:'#FFF',
         cTextDark:'#333'
     }
+    CoreStyle.g.theme.cGradient='linear-gradient(120deg, '+CoreStyle.g.theme.cAccent+' , '+CoreStyle.g.theme.cPrimaryDark+')';
+    console.log(CoreStyle.g.theme.cGradient);
     CoreStyle.g.paperInput.labelColor=CoreStyle.g.theme.cTextLight;
     CoreStyle.g.paperInput.focusedColor=CoreStyle.g.theme.cTextLight;
-</script>
+</script> 
 <core-style id="main">
     body {
-        background: {{g.theme.cBackground}};
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        background: {{g.theme.cBackgroundLight}};
+        font-family: Roboto, Helvetica, Arial, sans-serif;
         color: {{g.them.cTextDark}};
     }
 
 
     [drawer] {
         color: {{g.theme.cTextDark}};
-        background-color: {{g.theme.cBackground}};
+        background-color: {{g.theme.cBackgroundLight}};
     }
     core-icon-button{
         color:{{g.theme.cTextLight}};
@@ -35,16 +38,56 @@
 </core-style>
 
 <core-style id="menu-header">
-    .big-icon{
-        color:{{g.theme.cTextLight}};
-    }
+
+
+  
     .header-bar{
+        padding-top: 20px;
+        padding-bottom: 5px;
         color:{{g.theme.cTextLight}};
-        background-color: {{g.theme.cPrimary}};
+        background: {{g.theme.cGradient}};
     }
-    paper-input-decorator /deep/ .label-text {
+   
+
+</core-style>
+<core-style id="login">
+    .main{
+        background:{{g.theme.cGradient}} ;
+        color:{{g.theme.cTextLight}};
+    }
+    .big_icon{
+        height:82px;
+        width:82px;
+        color:{{g.theme.cTextLight}};
+    }
+    #bLogin, #bSignup{
+        background-color:{{g.theme.cAccent}};
+        color:{{g.theme.cTextLight}};
+    }
+
+
+    .buttons{
+        margin-top:20px;
+        margin-bottom: 10px;
+    }
+    a{
+        color:{{g.theme.cTextLight}};
+        text-decoration: none;
+        margin-bottom: 10px;
+    }
+</core-style>
+<core-style id="backup">
+ paper-input-decorator /deep/ .label-text {
         color:{{g.theme.cPrimaryDark}};
     }
-    
-
+    paper-input-decorator /deep/ ::-webkit-input-placeholder {
+    /* platform specific rules for placeholder text */
+        color:{{g.theme.cPrimaryDark}};
+    }
+    paper-input-decorator /deep/ ::-moz-placeholder {
+        color:{{g.theme.cPrimaryDark}};
+    }
+    paper-input-decorator /deep/ :-ms-input-placeholder {
+        color:{{g.theme.cPrimaryDark}};
+    }
 </core-style>

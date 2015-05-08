@@ -1,10 +1,11 @@
+var app;
 (function (document) {
   'use strict';
 
   // Grab a reference to our auto-binding template
   // and give it some initial binding values
   // Learn more about auto-binding templates at http://goo.gl/Dx1u2g
-  var app = document.querySelector('#app');
+  app= document.querySelector('#app');
   app.appName = 'Yo, Polymer App!';
   var fb=new Firebase("https://meetme.firebaseio.com");
   // Listen for template bound event to know when bindings
@@ -14,6 +15,7 @@
     var me={name:"yiou"};
     var map=document.querySelector('#map');
     var pin=document.querySelector('#pin');
+    var app=document.querySelector('#app');
     pin.markers=[];
     navigator.geolocation.getCurrentPosition(function(pos){
         map.latitude=pos.coords.latitude;
@@ -33,6 +35,10 @@
     function geo_error(){
         alert("sorry, no position available");
     }
+    app.openOverlay = function(e){
+        app.placeholder="Hello world"; 
+    };
+    
   });
   
 
