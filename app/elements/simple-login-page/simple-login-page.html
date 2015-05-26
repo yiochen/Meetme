@@ -1,0 +1,104 @@
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../styles/theme.html">
+<link rel="import" href="../../../bower_components/paper-input/paper-input-decorator.html">
+<polymer-element name="simple-login-page">
+    <template>
+        <style>
+        </style>
+        <core-style ref="simple-login"></core-style>
+        <div class="main" vertical layout center fit>
+            <div flex></div>
+            <div class="login-form" vertical layout center>
+                <core-icon icon="face" class="big_icon" self-center></core-icon>
+                <paper-input-decorator label="name" floatingLabel>
+                    <input is="core-input" committedValue={{name}}>
+                </paper-input-decorator>
+
+                <div horizontal layout center-justified class="buttons">
+                    <paper-button raised id="bLogin" on-click={{login}}>Login</paper-button>
+                </div>
+                <div>Login in as {{name}}</div>
+
+            </div>
+            <div flex></div>
+            <div id="extra" vertical layout center>
+                <a href="#">help</a>
+                <a href="#">credit</a>
+            </div>
+
+        </div>
+
+    </template>
+    <script>
+        (function () {
+            Polymer({
+                name: "",
+                ready: function () {
+
+                },
+                login: function () {
+
+                    //send to firebase
+                    var fb=app.fb;
+                    var pushRef=fb.push({name:this.name,lat:app.me.lat,lng:app.me.lng});
+                    app.user = {
+                            name: this.name,
+                            uid:pushRef.key(),
+                            profile: "app\/images\/Avatar.png"
+                        }
+                    app.me.uid=app.user.uid;
+                    
+                    function exist(uid){
+                        for (var marker of app.pin.markers){
+                            if (marker.uid==uid){
+                                
+                                return true;
+                            }
+                            console.log(marker.uid+" is not "+uid);
+                        }
+                        return false;
+                    }
+                    
+              
+                    //get updates when new person join
+                    app.fb.on('child_added', function (snapshot) {
+            
+                        var person = snapshot.val();
+                        
+                        //if the uid is not the same as the user's uid 
+                        if (!exist(snapshot.key())) {
+                            console.log("get "+person.name+" to pin in child_added");
+                            app.pin.markers[app.pin.markers.length] = {
+                                name: person.name,
+                                lat: person.lat,
+                                lng: person.lng,
+                                uid: snapshot.key()
+                            };
+                        }
+
+
+                    });
+                    //get updates when the location of a person changed
+                    app.fb.on('child_changed', function (snapshot) {
+                        var person = snapshot.val();
+                        console.log(person.name+" data changed!!");
+                        //if the person is not your self, and is a new person. add it.
+                        //if already logged in, and the name is not the same as the user name 
+                        if (app.user.uid!==snapshot.key()) {
+                            for (var marker of app.pin.markers) {
+                                if (marker.uid == snapshot.key()) {
+                                    marker.lat = person.lat;
+                                    marker.lng = person.lng;
+                                    break;
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+</polymer-element>

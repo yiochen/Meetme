@@ -28,7 +28,7 @@
       <core-style ref="menu-header"></core-style>
       <div vertical layout center class="header-bar">
           <div id="profile"></div>
-          <div> Yiou Chen </div>
+          <div> {{name}} </div>
           <paper-button>
               <core-icon icon="add-circle"></core-icon>
               New Meetme
@@ -39,7 +39,7 @@
     (function () {
       Polymer({
         ready: function () {
-            
+            this.name=app.user.name;
         }
       });
     })();

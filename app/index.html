@@ -17,7 +17,7 @@
   <!-- endbuild -->
   <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
     
-
+    
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
   <!-- endreplace-->
@@ -41,7 +41,7 @@
             </core-menu>
         </template> 
         <template if ="{{!user}}">
-            <login-page></login-page>
+            <simple-login-page></simple-login-page>
         </template>
         
 
@@ -51,10 +51,10 @@
       <div main vertical layout>
         
         
-        <google-map id="map" latitude="37.77493" longitude="-122.416942" flex>
+        <google-map id="map" latitude="37.77493" longitude="-122.416942" fitToMarkers flex>
             <template is="auto-binding" id="pin" repeat="{{marker in markers}}">
                 <google-map-marker latitude="{{marker.lat}}" longitude="{{marker.lng}}"
-      title="{{name}}"></google-map-marker> 
+      title="{{marker.name}}"></google-map-marker> 
             </template>
          
         </google-map>
