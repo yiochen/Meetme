@@ -54,7 +54,7 @@
         <google-map id="map" latitude="37.77493" longitude="-122.416942" fitToMarkers flex>
             <template is="auto-binding" id="pin" repeat="{{marker in markers}}">
                 <google-map-marker latitude="{{marker.lat}}" longitude="{{marker.lng}}"
-      title="{{marker.name}}"></google-map-marker> 
+      title="{{marker.name}}" icon="images/marker.png"><div>{{marker.name}}</div></google-map-marker> 
             </template>
          
         </google-map>
