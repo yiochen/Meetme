@@ -34,11 +34,17 @@
         <template if="{{user}}" >
             <menu-header></menu-header>
             <!-- Drawer Content -->
-            <core-menu selected="0">
-              <paper-item label="me & destination"></paper-item>
-              <paper-item label="all friend"></paper-item>
-              <paper-item label="all friend & destination"></paper-item>
-            </core-menu>
+            <!-- if joined a group already-->
+            <template if="{{group}}">
+                <paper-button style="width:100%;margin:0;">
+                    <core-icon icon="search"></core-icon>
+                    {{group.target}}
+                </paper-button>
+                <template repeat="{{member in group.members}}">
+                    <p>{{member.name}}</p>
+                </template>
+            </template>
+            
         </template> 
         <template if ="{{!user}}">
             <simple-login-page></simple-login-page>
