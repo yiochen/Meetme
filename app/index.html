@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="">
+<html lang="" ng-app="meetmeModule">
 
 <head>
   <meta charset="utf-8">
@@ -15,26 +15,31 @@
   <!-- build:js bower_components/webcomponentsjs/webcomponents.min.js -->
   <script src="../bower_components/webcomponentsjs/webcomponents.js"></script>
   <!-- endbuild -->
-  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
-    
-    
+  <!-- <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script> -->
+
+  <script src="../bower_components/angular/angular.js"></script>
   <!-- will be replaced with elements/elements.vulcanized.html -->
   <link rel="import" href="elements/elements.html">
+  
+  <script src="../bower_components/ng-polymer-elements/ng-polymer-elements.js" ></script>
+
+  <script src="scripts/app.js"></script>
   <!-- endreplace-->
 </head>
 
-<body unresolved fullbleed layout vertical>
-    <core-style ref="main"></core-style>
-  <template is="auto-binding" id="app">
+<body>
 
-    <core-drawer-panel>
+    <paper-drawer-panel ng-controller="globalCtrl">
 
       <!-- Drawer -->
-      <core-header-panel drawer>
-        <template if="{{user}}" >
+      <paper-header-panel drawer>
+        <input label="latitude" ng-model="latitude"></input>
+        <input label="longiture" ng-model="longitude"></input>
+        <h1>{{latitude}}</h1>
+        <h1>{{longitude}}</h1>
+        <!-- <template if="{{user}}" >
             <menu-header></menu-header>
-            <!-- Drawer Content -->
-            <!-- if joined a group already-->
+
             <template if="{{group}}">
                 <paper-button style="width:100%;margin:0;">
                     <core-icon icon="search"></core-icon>
@@ -44,27 +49,27 @@
                     <p>{{member.name}}</p>
                 </template>
             </template>
-            
-        </template> 
+
+        </template>
         <template if ="{{!user}}">
             <simple-login-page></simple-login-page>
-        </template>
-        
+        </template> -->
 
-      </core-header-panel>
+
+      </paper-header-panel>
 
       <!-- Main -->
-      <div main vertical layout>
-        
-        
-        <google-map id="map" latitude="37.77493" longitude="-122.416942" fitToMarkers flex>
+      <div main>
+        <google-map ng-latitude="latitude" ng-longitude="longitude"></google-map>
+
+        <!-- <google-map id="map" latitude="37.77493" longitude="-122.416942" fitToMarkers flex>
             <template is="auto-binding" id="pin" repeat="{{marker in markers}}">
                 <google-map-marker latitude="{{marker.lat}}" longitude="{{marker.lng}}"
-      title="{{marker.name}}" icon="images/marker.png"><div>{{marker.name}}</div></google-map-marker> 
+      title="{{marker.name}}" icon="images/marker.png"><div>{{marker.name}}</div></google-map-marker>
             </template>
-         
+
         </google-map>
-          
+
         <core-toolbar>
             <core-field flex>
                 <core-icon-button icon="menu" core-drawer-toggle></core-icon-button>
@@ -72,17 +77,16 @@
                     <input is="core-input">
                 </paper-input-decorator>
                 <core-icon-button icon="send" on-click="{{openOverlay}}" ></core-icon-button>
-            </core-field>  
-        </core-toolbar>
-        
-      </div>
-     
-    </core-drawer-panel>
+            </core-field>
+        </core-toolbar> -->
 
-  </template>
+      </div>
+
+    </paper-drawer-panel>
+
 
   <!-- build:js scripts/app.js -->
-  <script src="scripts/app.js"></script>
+
   <!-- endbuild-->
 </body>
 

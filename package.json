@@ -20,7 +20,7 @@
     "grunt-replace": "^0.8.0",
     "grunt-rev": "^0.1.0",
     "grunt-usemin": "^3.0.0",
-    "grunt-vulcanize": "^0.6.1",
+    "grunt-vulcanize": "^1.0.0",
     "jshint-stylish": "^1.0.0",
     "load-grunt-tasks": "^2.0.0",
     "serve-static": "^1.7.1",
